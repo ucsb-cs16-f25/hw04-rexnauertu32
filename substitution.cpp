@@ -13,8 +13,11 @@ char encrypt(char &c, string key) {
 		return c;
 	}
 
-	return (isupper(c)) ? toupper(key[UPPERCASE_ALPHABET.find(c)]) :
-		              key[LOWERCASE_ALPHABET.find(c)];
+	string keyLower = key;
+	for (char &kc : keyLower) kc = tolower(kc);
+
+	return (isupper(c)) ? toupper(keyLower[UPPERCASE_ALPHABET.find(c)]) :
+		              tolower(keyLower[LOWERCASE_ALPHABET.find(c)]);
 }
 
 char decrypt(char &c, string key) {
@@ -22,9 +25,12 @@ char decrypt(char &c, string key) {
 	if (!isalpha(c) || iswspace(c)) {
 		return c;
 	}
+	
+	string keyLower = key;
+	for (char &kc : keyLower) kc = tolower(kc);
 
-	return (isupper(c)) ? UPPERCASE_ALPHABET[key.find(tolower(c))] :
-		              LOWERCASE_ALPHABET[key.find(c)];
+	return (isupper(c)) ? UPPERCASE_ALPHABET[keyLower.find(tolower(c))] :
+		              LOWERCASE_ALPHABET[keyLower.find(c)];
 }
 
 string substitution(string encryptOrDecrypt, string key, string str) {
