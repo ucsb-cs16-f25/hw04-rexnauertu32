@@ -9,7 +9,7 @@ const string LOWERCASE_ALPHABET = "abcdefghijklmnopqrstuvwxyz";
 
 char encrypt(char &c, string key) {
 
-	if (!isalpha(c)) {
+	if (!isalpha(c) || iswspace(c)) {
 		return c;
 	}
 
@@ -19,7 +19,7 @@ char encrypt(char &c, string key) {
 
 char decrypt(char &c, string key) {
 
-	if (!isalpha(c)) {
+	if (!isalpha(c) || iswspace(c)) {
 		return c;
 	}
 
