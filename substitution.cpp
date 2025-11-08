@@ -23,9 +23,6 @@ char decrypt(char &c, string key) {
 		return c;
 	}
 
-	string keyLower = key;
-	for (char &k : key_lower) k = tolower(k);
-
 	return (isupper(c)) ? UPPERCASE_ALPHABET[key.find(tolower(c))] :
 		              LOWERCASE_ALPHABET[key.find(c)];
 }
